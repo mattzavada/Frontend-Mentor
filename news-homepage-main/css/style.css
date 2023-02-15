@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+:root{
+
+  --ff-default: 'Inter', sans-serif;
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --SoftOrang: hsl(35, 77%, 62%);
+  --SoftRed: hsl(5, 85%, 63%);
+
+  --Off-white: hsl(36, 100%, 99%);
+  --GrayishBlue: hsl(233, 8%, 79%);
+  --DarkGrayishBlue: hsl(236, 13%, 42%);
+  --VeryDarkBlue: hsl(240, 100%, 5%);
+
+  --fs-default: .9rem;
+
+}
+
+/* Reset */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Main Elements */
+body{
+  display: grid;
+  gap: 2rem;
+  grid-template-areas: 
+  "header header header"
+  "hero hero aside"
+  "title main aside"
+  "stories stories stories";
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 71rem;
+  
+  min-height: 100vh;
+  margin: 2rem auto;
+  padding: 1rem;
+
+  font-family: var(--ff-default);
+  font-size: var(--fs-default);
+  font-weight: var(--fw-normal);
+  color: var(--DarkGrayishBlue);
+
+  background-color: var(--Off-white);
+}
+
+/*Header*/
+
+header{
+  grid-area: header;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-content: center;
+}
+
+header > img{
+  margin-right: 3rem;
+}
+
+header nav{
+  align-self: center;
+  font-size: .95rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+/* Adjustment to navigation list styling and layout */
+.navigation{
+  display: flex;
+  flex-direction: row;
+  gap: 2.2rem;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+
+/* Navigation links */
+header a {
+  text-decoration: none;
+  color: var(--DarkGrayishBlue);
+}
+
+header a:hover{
+  color: var(--SoftRed);
+  
+}
+
+/* Hide navigation hamburger until desired width */
+.navigationbutton{
+  position:absolute;
+  visibility: hidden;
+  border: none;
+  background-color: transparent;
+}
+
+/*Main*/
+picture {
+  grid-area: hero;
+}
+
+h1{
+  grid-area: title;
+  font-size: 3.5rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--VeryDarkBlue);
+  line-height: 3.5rem;
+  padding-right: 2rem;
+}
+
+main{
+  grid-area: main;
+}
+
+main p {
+  padding-bottom: 2rem;
+}
+
+/* Main button link */
+main a{
+  background-color: var(--SoftRed);
+  padding: .9rem 2.3rem;
+  color: var(--Off-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+
+main a:is(:hover, :focus){
+  background-color: var(--VeryDarkBlue);
+}
+
+/* Aside */
+aside{
+  grid-area: aside;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem 1.5rem;
+  line-height: 1.5rem;
+
+  background-color: var(--VeryDarkBlue);
+  color: var(--Off-white);
+}
+
+aside h2 {
+  color: var(--SoftOrang);
+  font-weight: var(--fw-bold);
+  font-size: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+aside article{
+  margin: 0;
+}
+
+aside h3{
+  font-size: 1.3rem;
+}
+
+aside hr{
+  height: .1px;
+}
+aside p {
+  font-size: .9rem;
+  color: var(--GrayishBlue);
+  padding-top: .5rem;
+}
+
+/*Top Stories*/
+
+.top-stories{
+  grid-area: stories;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.7rem;
+  
+}
+
+.top-stories article{
+  display: flex;
+  gap: 1.85rem;
+
+  align-items: flex-start;
+}
+
+/* Prevent images from getting to big */
+.top-stories img {
+  max-height: 8rem;
+}
+
+.top-stories h2{
+  color: var(--GrayishBlue);
+  font-weight: var(--fw-extrabold);
+  font-size: 2rem;
+  margin-top: -.7rem;
+}
+
+.top-stories a{
+  text-decoration: none;
+  color: var(--VeryDarkBlue);
+  font-weight: var(--fw-extrabold);
+}
+
+@media (max-width: 930px) {
+  body {
+    grid-template-areas: 
+    "header header header"
+    "hero hero hero"
+    "title title title"
+    "main main main"
+    "stories stories aside";
+    grid-template-columns: .90fr .90fr 1.2fr;
+
+  }
+
+  /* Condense top-stories to 1 column and adjust margin & gaps for other items to display correctly*/
+  .top-stories{
+    grid-template-columns: 1fr;
+  }
+
+  aside hr {
+    margin-block: 1rem;
+  }
+
+  aside {
+    gap:1rem;
+  }
+
+  .navigation{
+    gap: 1.6rem;
+  }
+}
+
+@media (max-width: 515px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "hero"
+    "title"
+    "main"
+    "aside"
+    "stories";
+    place-content: start;
+  }
+
+  /* Position navigation off screen and vertical */
+  .navigation{
+    position:absolute;
+    height: 100%;
+    margin-top: -3rem; /*Move up outside of grid context */
+    padding: 7rem 1rem;
+    width: 15rem;
+    right: -15rem;
+
+    flex-direction: column; 
+    justify-content: flex-start; 
+    gap: 1rem; 
+
+    background-color: white;
+    transition: right 1s;
+
+    z-index: 2; /* Brings above dark overlay */
+  }
+
+  .navigationbutton{
+    z-index: 2; /* Brings above dark overlay */
+  }
+
+  /* Slide out navigation onClick and enable dark overlay */
+  .slide-nav-out{
+      right: 0rem;
+    }
+
+  .dark-overlay{
+    position: fixed;
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1; /* Ensures overlays all content on page */
+  }
+
+  /* Display navigation hamburger button once screen width is reached*/
+  .navigationbutton{
+    position: relative;
+    visibility: visible;
+  }
+}
+
+
+/* Navigation hambuger annimation */
+
+.navigationbutton .line {
+  transition: 
+  rotate 300ms ease-in,
+  y 300ms ease-in 300ms,
+  opacity 0ms 300ms;
+  ;
+  transform-origin: center;
+}
+
+.navigationbutton[aria-expanded="true"] .line {
+  transition: 
+  y 300ms ease-in,
+  rotate 300ms ease-in 300ms,
+  opacity 0ms 300ms;
+  ;
+}
+
+.navigationbutton[aria-expanded="true"] :is(.ham_top, .ham_bottom){
+  y: 45;
+}
+
+.navigationbutton[aria-expanded="true"] .ham_top{
+  rotate: 45deg;
+}
+
+.navigationbutton[aria-expanded="true"] .ham_middle{
+  opacity: 0;
+}
+
+.navigationbutton[aria-expanded="true"] .ham_bottom{
+  rotate: -45deg;
+}
